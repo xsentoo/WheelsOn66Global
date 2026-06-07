@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  trip-db:
+    # On utilise l'image officielle PostGIS, pas le PostgreSQL classique !
+    image: postgis/postgis:15-3.3
+    container_name: wheelson66-trip-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=wheelson66_trips
+    ports:
+      - "5432:5432"
+    volumes:
+      # Sauvegarde des données
+      - trip_db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  trip_db_data:
