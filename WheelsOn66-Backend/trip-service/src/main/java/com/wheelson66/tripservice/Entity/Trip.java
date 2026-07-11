@@ -2,6 +2,7 @@ package com.wheelson66.tripservice.Entity;
 
 import ch.qos.logback.core.status.Status;
 import com.wheelson66.tripservice.Entity.Enums.TripStatus;
+import com.wheelson66.tripservice.Entity.Enums.Visibility;
 import jakarta.persistence.*;
 import lombok.*;
 import org.geolatte.geom.LineString;
@@ -18,8 +19,9 @@ import java.util.UUID;
 @Builder
 @EqualsAndHashCode(callSuper = false)
 public class Trip extends BaseEntity {
+    private Visibility visibility;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false)
